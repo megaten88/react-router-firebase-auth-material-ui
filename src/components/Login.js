@@ -1,8 +1,10 @@
 import React, { Component } from 'react';
 import { login, resetPassword } from '../helpers/auth';
+import { firebaseUI, firebaseAuth } from '../config/constants';
+import StyledFirebaseAuth from 'react-firebaseui/StyledFirebaseAuth';
 
-import RaisedButton from 'material-ui/RaisedButton';
-import TextField from 'material-ui/TextField';
+import Button from '@material-ui/core/Button';
+import TextField from '@material-ui/core/TextField';
 
 function setErrorMsg(error) {
   return {
@@ -21,6 +23,7 @@ export default class Login extends Component {
   }
 
   handleSubmit = e => {
+    console.log('submut');
     e.preventDefault();
     login(this.state.email, this.state.password).catch(error => {
       this.setState(setErrorMsg('Invalid username/password.'));
@@ -37,45 +40,8 @@ export default class Login extends Component {
   };
   render() {
     return (
-      <form
-        style={style.container}
-        onSubmit={event => this.handleSubmit(event)}
-      >
-        <h3>Login</h3>
-        <TextField
-          hintText="Enter your Email"
-          floatingLabelText="Email"
-          onChange={(event, newValue) => this.setState({ email: newValue })}
-        />
-        <br />
-        <TextField
-          type="password"
-          hintText="Enter your Password"
-          floatingLabelText="Password"
-          onChange={(event, newValue) => this.setState({ password: newValue })}
-        />
-        <br />
-        {this.state.loginMessage && (
-          <div className="alert alert-danger" role="alert">
-            <span
-              className="glyphicon glyphicon-exclamation-sign"
-              aria-hidden="true"
-            />
-            <span className="sr-only">Error:</span>
-            &nbsp;{this.state.loginMessage}{' '}
-            <a href="#" onClick={this.resetPassword} className="alert-link">
-              Forgot Password?
-            </a>
-          </div>
-        )}
-        <RaisedButton
-          label="Login"
-          primary={true}
-          style={style.raisedBtn}
-          type="submit"
-        />
-      </form>
-    );
+      <StyledFirebaseAuth uiConfig={firebaseUI} firebaseAuth={firebaseAuth()}/>
+          );
   }
 }
 

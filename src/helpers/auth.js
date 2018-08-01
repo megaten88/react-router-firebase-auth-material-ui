@@ -1,5 +1,6 @@
 import { db, firebaseAuth } from '../config/constants';
 
+
 export function auth(email, pw) {
   return firebaseAuth()
     .createUserWithEmailAndPassword(email, pw)

@@ -1,9 +1,13 @@
 import firebase from 'firebase';
+
+import StyledFirebaseAuth from 'react-firebaseui/StyledFirebaseAuth';
+
 // Required for side-effects
 require('firebase/firestore');
 
+
 const config = {
-  apiKey: process.env.REACT_APP_FIREBASE_KEY,
+  apiKey: process.env.REACT_APP_FIREBASE_APIKEY,
   authDomain: process.env.REACT_APP_AUTH_DOMAIN,
   databaseURL: process.env.REACT_APP_DATABASE_URL,
   projectId: process.env.REACT_APP_PROJECT_ID,
@@ -13,5 +17,17 @@ const config = {
 
 firebase.initializeApp(config);
 
+
+const uiConfig = {
+  signInFlow: 'popup',
+  signInSuccessUrl: '/dashboard',
+  signInOptions: [
+    firebase.auth.GoogleAuthProvider.PROVIDER_ID,
+    firebase.auth.EmailAuthProvider.PROVIDER_ID,
+  ],
+  
+};
+
 export const db = firebase.firestore();
 export const firebaseAuth = firebase.auth;
+export const firebaseUI = uiConfig;
