@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { login, resetPassword } from '../helpers/auth';
+import { login, resetPassword} from '../helpers/auth';
 import { firebaseUI, firebaseAuth } from '../config/constants';
 import StyledFirebaseAuth from 'react-firebaseui/StyledFirebaseAuth';
 
@@ -23,7 +23,7 @@ export default class Login extends Component {
   }
 
   handleSubmit = e => {
-    console.log('submut');
+    console.log('submit');
     e.preventDefault();
     login(this.state.email, this.state.password).catch(error => {
       this.setState(setErrorMsg('Invalid username/password.'));
@@ -42,6 +42,7 @@ export default class Login extends Component {
     return (
       <StyledFirebaseAuth uiConfig={firebaseUI} firebaseAuth={firebaseAuth()}/>
           );
+
   }
 }
 

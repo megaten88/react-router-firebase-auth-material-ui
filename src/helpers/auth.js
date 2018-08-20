@@ -12,7 +12,9 @@ export function logout() {
 }
 
 export function login(email, pw) {
-  return firebaseAuth().signInWithEmailAndPassword(email, pw);
+  return firebaseAuth()
+        .signInWithEmailAndPassword(email, pw)
+        .then(saveUser);
 }
 
 export function resetPassword(email) {
@@ -21,13 +23,9 @@ export function resetPassword(email) {
 
 export function saveUser(user) {
   return db
-    .collection(`users`)
-    .add({
+    .ref('users/' + user.uid).set({
       email: user.email,
-      uid: user.uid
-    })
-    .then(docRef => docRef)
-    .catch(function(error) {
-      console.error('Error adding document: ', error);
+      username: user.displayName,
+      userphoto: user.photoURL
     });
 }

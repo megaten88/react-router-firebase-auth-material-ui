@@ -6,7 +6,7 @@ import Login from './Login';
 import Register from './Register';
 import Home from './Home';
 import Dashboard from './protected/Dashboard';
-import { logout } from '../helpers/auth';
+import { logout, saveUser } from '../helpers/auth';
 import { firebaseAuth } from '../config/constants';
 import AppBar from '@material-ui/core/AppBar';
 import Button from '@material-ui/core/Button';
@@ -77,6 +77,7 @@ class App extends Component {
           authed: true,
           loading: false
         });
+        saveUser(user);
       } else {
         this.setState({
           authed: false,
@@ -128,11 +129,8 @@ class App extends Component {
             
             <AppBar position="static"  >
               <Toolbar>
-                <IconButton  className={this.classes.menuButton} color="inherit" aria-label="Menu">
-                  <MenuIcon />
-                </IconButton>
                 <Typography variant="title" color="inherit" className={this.classes.flex}>
-                  aa
+                  Examen UX 
                   </Typography>
                   {topbarButtons}    
               </Toolbar>

@@ -28,6 +28,6 @@ const uiConfig = {
   
 };
 
-export const db = firebase.firestore();
+export const db = firebase.database();
 export const firebaseAuth = firebase.auth;
 export const firebaseUI = uiConfig;
