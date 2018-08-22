@@ -1,0 +1,9 @@
+.buttons{
+    overflow: auto;
+    float: left;
+}
+
+.buttons div{
+    display: inline;
+    padding: 10px 10px 10px 10px
+}
