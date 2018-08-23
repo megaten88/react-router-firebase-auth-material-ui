@@ -10,7 +10,7 @@ export function saveCard(dataObject){
             user: firebaseAuth().currentUser.uid,
             avatar: firebaseAuth().currentUser.displayName.match(/(?<=(\s|^))[a-z]/gi).join('').toUpperCase(),
             likes: 0,
-            liked: [{}],
+            liked: "",
             date: Date.now(),
         });
 }

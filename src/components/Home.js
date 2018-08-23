@@ -54,27 +54,9 @@ export default class Home extends Component {
     });
 }
 
-followUser=()=>{
-
-}
 
 addlike(key,likesPost){
-    if(firebaseAuth().currentUser!=null){
-      let bool = false;
-      db.ref('posts/'+ key).update({likes:likesPost+1});
-      db.ref('/posts').on('value', (snapshot) => {
-        snapshot.forEach(doc => {
-            if (_.find(doc,{liked: firebaseAuth().currentUser})) {
-               bool = true;
-            }
-        })
-    });
-      if(!bool){
-          db.ref('posts/' + key).push({
-              liked: firebaseAuth().currentUser
-          });
-      }
-    }
+    
 }
 
   render() {
@@ -111,7 +93,7 @@ addlike(key,likesPost){
                                         </Typography>
                                     </CardContent>
                                     <CardActions>
-                                      <Button variant="fab" onClick={this.addlike(key,likes)} mini color="primary" aria-label="Add">
+                                      <Button variant="fab" onClick={this.addlike(doc.key,doc.likes)} mini color="primary" aria-label="Add">
                                         <FavoriteIcon />
                                       </Button>
                                         <Button variant="fab" mini color="primary" aria-label="Add" >
