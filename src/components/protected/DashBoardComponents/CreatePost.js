@@ -13,7 +13,7 @@ import FormHelperText from '@material-ui/core/FormHelperText';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
 import FormControl from '@material-ui/core/FormControl';
 import FormLabel from '@material-ui/core/FormLabel';
-import './CreateCardDialog.css';
+import './CreatePost.css';
 import {saveCard} from '../../databaseConnection/databaseConnection';
 
 export default class FormDialog extends React.Component {

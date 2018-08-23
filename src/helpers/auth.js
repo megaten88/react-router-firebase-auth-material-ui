@@ -26,6 +26,8 @@ export function saveUser(user) {
     .ref('users/' + user.uid).set({
       email: user.email,
       username: user.displayName,
-      userphoto: user.photoURL
+      userphoto: user.photoURL,
+      followers: [],
+      following:[]
     });
 }

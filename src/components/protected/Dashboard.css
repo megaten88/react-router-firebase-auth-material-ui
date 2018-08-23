@@ -1,9 +1,37 @@
-.buttons{
-    overflow: auto;
-    float: left;
+.container-fluid div{
+        align-content: space-between;
+    
 }
+
+.buttons{
+    position: relative;
+    display: flex;
+    align-content: center;
+    left: 50%;
+    height: 100px;
+    
+}
+
+
 
 .buttons div{
     display: inline;
-    padding: 10px 10px 10px 10px
+    padding: 10px, 10px, 10px, 10px
+}
+
+.List{
+    position: relative;
+    display: flex;
+    align-self: center;
+    flex-wrap: wrap;
+    flex-direction: row;
+    align-content: center;
+    left: 10%;
+}
+
+
+.Card{
+    position: relative;
+    color:blue;
+    margin-top:15px
 }

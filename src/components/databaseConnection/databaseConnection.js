@@ -8,7 +8,9 @@ export function saveCard(dataObject){
             content: dataObject.content,
             privacy: dataObject.value,
             user: firebaseAuth().currentUser.uid,
+            avatar: firebaseAuth().currentUser.displayName.match(/(?<=(\s|^))[a-z]/gi).join('').toUpperCase(),
             likes: 0,
-            date: firebase.database.ServerValue.TIMESTAMP,
+            liked: [{}],
+            date: Date.now(),
         });
 }
