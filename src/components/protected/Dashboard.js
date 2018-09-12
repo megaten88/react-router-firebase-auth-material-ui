@@ -36,7 +36,7 @@ class Dashboard extends Component {
   }
 
   componentDidMount() {
-    db.ref('/posts').orderByChild('date').on('value', (snapshot) => {
+    db.ref('posts/').on('value', (snapshot) => {
         let list = []
         snapshot.forEach(doc => {
             if (doc.val().user === (firebaseAuth().currentUser).uid) {

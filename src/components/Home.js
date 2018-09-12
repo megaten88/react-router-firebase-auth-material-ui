@@ -29,7 +29,7 @@ export default class Home extends Component {
   }
 
   componentDidMount() {
-    db.ref('/posts').orderByChild('date').on('value', (snapshot) => {
+    db.ref('posts/').on('value', (snapshot) => {
         let list = []
         snapshot.forEach(doc => {
             if (doc.val().privacy=="1") {
@@ -54,14 +54,11 @@ export default class Home extends Component {
     });
 }
 
-
-addlike(key,likesPost){
-    
+addLikes = (key, likes1) =>{
+    db.ref('posts/' + key).update({likes: (likes1+1)});
 }
 
   render() {
-    const { classes } = this.props;
-    let button;
     return (
       <div>
         <List className="List" subheader={<li />}>
@@ -93,8 +90,9 @@ addlike(key,likesPost){
                                         </Typography>
                                     </CardContent>
                                     <CardActions>
-                                      <Button variant="fab" onClick={this.addlike(doc.key,doc.likes)} mini color="primary" aria-label="Add">
+                                      <Button variant="fab"  mini color="primary" aria-label="Add">
                                         <FavoriteIcon />
+                                        {doc.likes}
                                       </Button>
                                         <Button variant="fab" mini color="primary" aria-label="Add" >
                                             <PersonAddIcon />

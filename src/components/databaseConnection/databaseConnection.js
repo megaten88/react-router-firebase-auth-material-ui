@@ -3,7 +3,7 @@ import firebase from 'firebase';
 
 export function saveCard(dataObject){
     return db
-        .ref('posts').push({
+        .ref('posts/').push({
             title: dataObject.title,
             content: dataObject.content,
             privacy: dataObject.value,
